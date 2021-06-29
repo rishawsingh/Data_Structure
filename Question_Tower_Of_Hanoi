@@ -38,3 +38,25 @@ Expected Auxiliary Space: O(N).
 
 Constraints:
 1 <= N <= 16
+
+
+
+
+#SOLUTION.
+
+long long toh(int N, int from, int to, int aux) {
+    int s = 0;
+    if (N == 1)
+    {
+        printf("move disk %d from rod %d to rod %d\n",N,from,to);
+        return 1;
+    }
+    else
+    {
+        s=toh(N-1, from, aux, to);
+        printf("move disk %d  from rod %d to rod %d\n", N, from, to);
+        s++;
+        s+=toh(N-1, aux, to, from);
+    }
+    return s;
+}
